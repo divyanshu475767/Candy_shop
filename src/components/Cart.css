@@ -1,0 +1,6 @@
+.cart{
+    background-color: rgb(140, 187, 227);
+    height: 100px;
+    width: 300px;
+    overflow: auto;
+}
