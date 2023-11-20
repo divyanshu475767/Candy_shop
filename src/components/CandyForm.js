@@ -1,7 +1,7 @@
 import React, { useState  , useContext} from 'react'
 import context from '../store/context.js';
 import Cart from './Cart.js';
-
+import axios from 'axios';
 
 const CandyForm = () => {
 
@@ -35,6 +35,8 @@ const CandyForm = () => {
         description:description,
         price:price,
     })
+
+  
 
     setName('');
     setDescription('');
@@ -77,8 +79,7 @@ const CandyForm = () => {
      <span>{ctx.itemCount}</span>--  
      cart
     </button>
-
-  {ctx.isCartShown && <Cart/>}
+    {ctx.isCartShown &&<Cart/>}
     </div>
   )
 }

@@ -12,7 +12,6 @@ function App(props) {
 
       <CandyForm/>
       <CandyList/>
-   
 
     </Provider>
   );

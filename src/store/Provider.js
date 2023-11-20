@@ -1,17 +1,48 @@
 import context from './context.js';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-
+import axios from 'axios';
 
 
 const Provider = (props) => {
+ 
 
+
+ 
     const [candies, setCandies] = useState([]);
     const [items, setItems] = useState(0);
     const [isCartShown, setIsCartShown] = useState( false)
-
+    useEffect(()=>{
+        axios.get('http://localhost:3000/getCandy',{
+          headers:{
+            Authorization:localStorage.getItem('token'),
+          }
+        })
+        .then(response=>{
+          setCandies(response.data);
+        })
+    },[])
     const addCandy = (candy) =>{
           setCandies((prev)=>{
+            axios.post('http://localhost:3000/createCandy',{
+      
+            items:[...prev , candy],
+        
+        }
+        ,
+        {
+          headers:{
+            Authorization:localStorage.getItem('token'),
+          }
+        }
+        )
+        .then(response=>{
+          console.log(response);
+        })
+        .catch(err=>{
+          console.log(err);
+        })
             return [...prev , candy]
           })
     }

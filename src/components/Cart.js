@@ -14,6 +14,7 @@ const Cart = () => {
 
   return (
 
+    
     <div className='cart'>
 
     <ul >
